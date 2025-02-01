@@ -1,6 +1,6 @@
 {
 	"name": "@anksji/remotion-chroma-key-effects",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"main": "dist/effects.cjs.js",
 	"module": "dist/effects.es.js",
 	"types": "dist/index.d.ts",
@@ -15,10 +15,12 @@
 		"dist"
 	],
 	"publishConfig": {
-		"registry": "https://npm.pkg.github.com",
-		"access": "restricted"
+		"access": "public"
 	},
-	"repository": "github:anksji/remotion-chroma-key-effects",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/anksji/remotion-chroma-key-effects.git"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc -b && vite build",
@@ -52,5 +54,25 @@
 		"typescript-eslint": "^8.15.0",
 		"vite": "^6.0.1",
 		"vite-plugin-dts": "^4.3.0"
-	}
+	},
+	"description": "Chroma Key Shader ",
+	"keywords": [
+		"chroma",
+		"key",
+		"shader",
+		"remotion",
+		"video",
+		"editing",
+		"green",
+		"screen",
+		"green",
+		"screen",
+		"effect"
+	],
+	"author": "Ankit Dwivedi",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/anksji/remotion-chroma-key-effects/issues"
+	},
+	"homepage": "https://github.com/anksji/remotion-chroma-key-effects#readme"
 }

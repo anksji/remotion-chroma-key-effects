@@ -1,26 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {createChromaKeyShader, WebGLContext} from './shader/ChromaKeyShader';
-
-interface GreenScreenOverlayProps {
-	src: string;
-	startTimeInSeconds?: number;
-	durationInSeconds?: number;
-	loop?: boolean;
-	isPlaying: boolean;
-	scale?: number;
-	position?: {
-		x?: number;
-		y?: number;
-	};
-	isChromaKeyEnabled?: boolean;
-	chromaKeyConfig?: {
-		keyColor?: [number, number, number];
-		similarity?: number;
-		smoothness?: number;
-		spill?: number;
-	};
-}
+import {GreenScreenOverlayProps} from './types/greenscreenprops';
 
 export const GreenScreenOverlay: React.FC<GreenScreenOverlayProps> = ({
 	src,

@@ -1,4 +1,4 @@
-# @anksji/remotion-chroma-key-effects
+# Remotion Chroma Key Effect
 
 A React component library for adding video effects in Remotion, featuring green screen (chroma key) capabilities.
 
