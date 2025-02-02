@@ -46,40 +46,36 @@ export const GreenScreenOverlay: React.FC<GreenScreenOverlayProps> = ({
 	);
 
 	const initGL = useCallback(() => {
-		if (!isChromaKeyEnabled) return;
+		if (typeof window === 'undefined' || !isChromaKeyEnabled) return;
+
 		const canvas = canvasRef.current;
 		if (!canvas) return;
 
 		try {
 			const gl = canvas.getContext('webgl2', {
+				failIfMajorPerformanceCaveat: false,
+				powerPreference: 'default',
 				preserveDrawingBuffer: true,
 				antialias: false,
-				premultipliedAlpha: false,
 				alpha: true,
+				premultipliedAlpha: false,
 				depth: false,
 				stencil: false,
-				powerPreference: 'high-performance',
-				desynchronized: false,
-			}) as WebGL2RenderingContext;
+			});
 
-			if (!gl) return null;
+			if (!gl) {
+				throw new Error('WebGL2 not available');
+			}
 
-			// Create shared memory buffer
-			const sharedBuffer = gl.createBuffer();
-			gl.bindBuffer(gl.ARRAY_BUFFER, sharedBuffer);
-
-			// Force hardware acceleration
-			gl.getExtension('WEBGL_lose_context');
-			gl.getExtension('EXT_color_buffer_float');
-
-			return createChromaKeyShader({
+			const context = createChromaKeyShader({
 				width,
 				height,
 				...chromaKeyConfig,
 			}).initGL(canvas);
+
+			glRef.current = context;
 		} catch (error) {
-			console.error('WebGL init error:', error);
-			return null;
+			console.error('WebGL init failed:', error);
 		}
 	}, [width, height, chromaKeyConfig, isChromaKeyEnabled]);
 

@@ -1,16 +1,18 @@
 {
-	"name": "@anksji/remotion-chroma-key-effects",
-	"version": "1.0.1",
-	"main": "dist/effects.cjs.js",
-	"module": "dist/effects.es.js",
+	"name": "@stackops/remotion-chroma-key-effects",
+	"version": "1.0.2",
+	"main": "dist/index.cjs.js",
+	"module": "dist/index.es.js",
 	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"import": "./dist/effects.es.js",
-			"require": "./dist/effects.cjs.js"
+			"import": "./dist/index.es.js",
+			"require": "./dist/index.cjs.js",
+			"default": "./dist/index.cjs.js"
 		}
 	},
+	"typings": "./dist/index.d.ts",
 	"files": [
 		"dist"
 	],
@@ -65,9 +67,7 @@
 		"editing",
 		"green",
 		"screen",
-		"green",
-		"screen",
-		"effect"
+		"effects"
 	],
 	"author": "Ankit Dwivedi",
 	"license": "MIT",
